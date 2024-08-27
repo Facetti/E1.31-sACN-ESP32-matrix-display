@@ -4,6 +4,7 @@ This project shows how to play a video on a Windows PC, sending the data traffic
 In E1.31 there is a concept of Universes, which is a data block with max 512 bytes called Channels.
 To keep it simple, we use one universe per row/line of the matrix display. 
 Because we have three bytes (RGB) per pixel, we can have max 170 (512/3) LEDs horizontally. This is sufficient for two chained 64x64 matrixes (2 * 64 = 128 columns; 128 * 3 = 384 bytes).
+
 Payload structure (bytes): start code (ignore) | Pixel 1 R | Pixel 1 G | Pixel 1 B | Pixel 2 R | Pixel 2 G | .... | Pixel 128 G | Pixel 128 R
 
 
