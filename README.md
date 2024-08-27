@@ -1,9 +1,10 @@
 # ESP32 with matrix display receiving E.131/sACN data via WiFi 
-This project shows how to play a video on a Windows PC, sending the data traffic in E1.31 sACN (DMX over Ethernet) protocol and receive it via WLAN on a ESP32 to display it on two chained 64x64 LED matrix displays (= heigh/rows/lines 64, width/columns 128).
+This project shows how to play a video on a Windows PC, sending the data traffic in E1.31 sACN (DMX over Ethernet) protocol and receive it via WLAN on a ESP32 to display it on two chained 64x64 LED matrix displays (= heigh/rows/lines 64, width/columns 128). Because of the inefficient coding and protocol overhead don't expect high frame rates and don't be surprised if not all lines are updated. Anyway, this is a good starting point for your own optimizations.
 
 In E1.31 there is a concept of Universes, which is a data block with max 512 bytes called Channels.
 To keep it simple, we use one universe per row/line of the matrix display. 
 Because we have three bytes (RGB) per pixel, we can have max 170 (512/3) LEDs horizontally. This is sufficient for two chained 64x64 matrixes (2 * 64 = 128 columns; 128 * 3 = 384 bytes).
+
 
 ## Requirements
 ### Hardware
@@ -33,4 +34,8 @@ Select the first cell in each line and use Fast Patch
 * Pixel Order: RGB
 * First Channel: 0 (check it! - if your universe has more channels defined than the x-dimension, this value will automatically be changed to the first 'unused' channel number)
 * Patch Device: eACN/E1.31 239.255.0.x \[x\] (where is is the univers/line number)
-###
+### Testing
+* Set Channel 1 effect to Plasma and Setup->Start Output
+* Select Channel 1 AVI Player, Edit to select your Video and Setup->Start Output
+  
+
